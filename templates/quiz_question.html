@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }} - Savol {{ index|add:1 }}{% endblock %}
+{% block content %}
+
+<div class="bg-white p-6 shadow rounded-xl">
+
+  <!-- Progress bar -->
+  <div class="mb-6">
+    <div class="flex justify-between mb-1">
+      <span class="text-sm font-medium text-blue-700">
+        Savol {{ index|add:1 }} / {{ total }}
+      </span>
+      <span class="text-sm font-medium text-blue-700">
+        {{ progress }}%
+      </span>
+    </div>
+    <div class="w-full bg-gray-200 rounded-full h-3">
+      <div class="bg-blue-600 h-3 rounded-full transition-all duration-500"
+           style="width: {{ progress }}%">
+      </div>
+    </div>
+  </div>
+
+  <!-- Savol matni -->
+  <p class="text-lg font-semibold mb-4">
+    {{ index|add:1 }}. {{ question.text }}
+  </p>
+
+  <form method="post" class="space-y-2">
+    {% csrf_token %}
+    {% for answer in question.answers.all %}
+      {% if feedback %}
+        {% if feedback.selected_id and answer.id == feedback.selected_id and not feedback.is_correct %}
+          <div class="p-3 rounded bg-red-200 border-2 border-red-500">
+            ❌ {{ answer.text }} <span class="text-xs text-gray-600">(tanlagan javobingiz)</span>
+          </div>
+        {% elif answer.id == feedback.correct_id %}
+          <div class="p-3 rounded bg-green-200 border-2 border-green-500">
+            ✅ {{ answer.text }} {% if feedback.selected_id == answer.id %}<span class="text-xs text-gray-600">(tanlagan javobingiz)</span>{% endif %}
+          </div>
+        {% else %}
+          <div class="p-3 rounded bg-gray-100">{{ answer.text }}</div>
+        {% endif %}
+      {% else %}
+        <label class="block p-3 border rounded cursor-pointer transition hover:bg-blue-50 answer-option">
+          <input type="radio" name="answer" value="{{ answer.id }}" class="hidden peer">
+          <span class="peer-checked:bg-blue-100 peer-checked:ring-2 peer-checked:ring-blue-500 block p-1 rounded">
+            {{ answer.text }}
+          </span>
+        </label>
+      {% endif %}
+    {% endfor %}
+
+
+    {% if feedback %}
+      <a href="{% url 'quiz:quiz_question' quiz.id index|add:1 %}"
+         class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+        ⏭️ Keyingi savol
+      </a>
+    {% else %}
+      <button type="submit"
+              class="mt-4 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700">
+        ✅ Javobni tekshirish
+      </button>
+    {% endif %}
+  </form>
+</div>
+
+{% endblock %}

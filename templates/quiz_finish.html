@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }} - Natija{% endblock %}
+{% block content %}
+<div class="bg-white p-8 shadow-lg rounded-2xl text-center">
+  <h2 class="text-3xl font-bold text-green-600 mb-6">✅ Test tugadi!</h2>
+  <p class="text-lg mb-3">
+    Siz <b>{{ total }}</b> savoldan <b>{{ score }}</b> tasiga to‘g‘ri javob berdingiz.
+  </p>
+  <p class="text-xl font-bold mb-6">Foiz: {{ percent }}%</p>
+
+  <!-- Progress bar -->
+  <div class="mb-8">
+    <div class="flex justify-between mb-1">
+      <span class="text-sm font-medium text-green-700">Bajarildi</span>
+      <span class="text-sm font-medium text-green-700">100%</span>
+    </div>
+    <div class="w-full bg-gray-200 rounded-full h-3">
+      <div class="bg-green-600 h-3 rounded-full transition-all duration-700"
+           style="width: 100%">
+      </div>
+    </div>
+  </div>
+
+  <a href="{% url 'quiz:quiz_list' %}"
+     class="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+    🔄 Boshqa test tanlash
+  </a>
+</div>
+{% endblock %}

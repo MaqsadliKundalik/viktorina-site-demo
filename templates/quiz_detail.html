@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }}{% endblock %}
+{% block content %}
+  <h2 class="text-2xl font-semibold mb-6">{{ quiz.title }}</h2>
+  <form method="post" class="space-y-6">
+    {% csrf_token %}
+    {% for question in questions %}
+      <div class="p-4 bg-white shadow-sm rounded-xl">
+        <p class="font-medium mb-3">{{ forloop.counter }}. {{ question.text }}</p>
+        <div class="space-y-2">
+          {% for answer in question.answers.all %}
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input type="radio" name="{{ question.id }}" value="{{ answer.id }}"
+                     class="text-blue-600 focus:ring-blue-500">
+              <span>{{ answer.text }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+    <button type="submit"
+            class="w-full md:w-auto px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+      ✅ Natijani ko‘rish
+    </button>
+  </form>
+{% endblock %}
