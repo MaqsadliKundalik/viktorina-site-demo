@@ -2,28 +2,30 @@
 {% block title %}Testlar ro‘yxati{% endblock %}
 {% block content %}
 
-<h2 class="text-2xl font-semibold mb-6">📚 Testlar ro‘yxati</h2>
+<h2 class="text-xl sm:text-2xl font-semibold mb-6 text-center">📚 Testlar ro‘yxati</h2>
 
-<div class="space-y-8">
+<div class="space-y-12">
   {% for category in categories %}
     <div>
-      <h3 class="text-xl font-bold text-blue-600 mb-4">{{ category.name }}</h3>
-      <div class="grid gap-4 md:grid-cols-2">
+      <h3 class="text-lg sm:text-xl font-bold text-blue-600 mb-6 text-center">{{ category.name }}</h3>
+
+      <!-- Flex card container -->
+      <div class="flex flex-wrap justify-center gap-6">
         {% for quiz in category.quizzes.all %}
           <a href="{% url 'quiz:start_quiz' quiz.id %}"
-             class="block p-4 bg-white shadow-md rounded-xl hover:shadow-lg transition">
-            <h4 class="text-lg font-semibold text-gray-800">{{ quiz.title }}</h4>
-            <p class="text-sm text-gray-500">
+             class="w-full sm:w-72 p-5 bg-white shadow-md rounded-2xl hover:shadow-xl hover:scale-105 transition transform">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-800 mb-2">{{ quiz.title }}</h4>
+            <p class="text-sm sm:text-base text-gray-600">
               Savollar soni: {{ quiz.questions.count }}
             </p>
           </a>
         {% empty %}
-          <p class="text-gray-600">Bu bo‘limda test yo‘q</p>
+          <p class="text-gray-600 text-center w-full">Bu bo‘limda test yo‘q</p>
         {% endfor %}
       </div>
     </div>
   {% empty %}
-    <p class="text-gray-600">Hali hech qanday bo‘lim va test qo‘shilmagan.</p>
+    <p class="text-gray-600 text-center">Hali hech qanday bo‘lim va test qo‘shilmagan.</p>
   {% endfor %}
 </div>
 
