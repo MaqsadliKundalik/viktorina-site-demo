@@ -3,18 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Viktorina{% endblock %}</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      background: var(--tg-theme-bg-color, #17212b);
+      color: var(--tg-theme-text-color, #fff);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .tg-container {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 0 0 16px 0;
+    }
+    .tg-header {
+      background: var(--tg-theme-header-bg-color, #222e35);
+      color: var(--tg-theme-header-text-color, #fff);
+      padding: 18px 20px 12px 20px;
+      font-size: 20px;
+      font-weight: 600;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+    }
+    .tg-card {
+      background: var(--tg-theme-secondary-bg-color, #222e35);
+      border-radius: 18px;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+      margin-top: 12px;
+      padding: 20px 16px 24px 16px;
+      min-height: 320px;
+    }
+    .tg-footer {
+      text-align: center;
+      color: var(--tg-theme-hint-color, #a0a0a0);
+      font-size: 13px;
+      margin-top: 18px;
+    }
+    a, button {
+      color: var(--tg-theme-link-color, #61dafb);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-4xl mx-auto p-6">
-    <header class="mb-8 text-center">
-      <h1 class="text-3xl font-bold text-blue-600">🎯 Viktorina</h1>
-      <p class="text-gray-500">Savollarga javob bering va natijangizni biling!</p>
-    </header>
-
-    <main>
+<body>
+  <div class="tg-container">
+    <div class="tg-header">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="height:28px;width:28px;">
+      Viktorina
+    </div>
+    <div class="tg-card">
       {% block content %}{% endblock %}
-    </main>
+    </div>
+    <div class="tg-footer">
+      <span>Telegram mini-app uchun moslashtirildi</span>
+    </div>
   </div>
+  <script>
+    if (window.Telegram && Telegram.WebApp) {
+      Telegram.WebApp.expand();
+      document.body.style.background = Telegram.WebApp.themeParams.bg_color || '#17212b';
+    }
+  </script>
 </body>
 </html>

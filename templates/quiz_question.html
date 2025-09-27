@@ -2,65 +2,58 @@
 {% block title %}{{ quiz.title }} - Savol {{ index|add:1 }}{% endblock %}
 {% block content %}
 
-<div class="bg-white p-6 shadow rounded-2xl max-w-2xl mx-auto">
-
+<div style="background: var(--tg-theme-secondary-bg-color, #222e35); border-radius: 18px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); max-width: 420px; margin: 0 auto; padding: 22px 12px 18px 12px;">
   <!-- Progress bar -->
-  <div class="mb-6">
-    <div class="flex justify-between mb-2 text-sm sm:text-base">
-      <span class="font-medium text-blue-700">
-        Savol {{ index|add:1 }} / {{ total }}
-      </span>
-      <span class="font-medium text-blue-700">
-        {{ progress }}%
-      </span>
+  <div style="margin-bottom: 18px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.98rem; font-weight: 500; color: var(--tg-theme-link-color, #61dafb);">
+      <span> Savol {{ index|add:1 }} / {{ total }} </span>
+      <span> {{ progress }}% </span>
     </div>
-    <div class="w-full bg-gray-200 rounded-full h-3">
-      <div class="bg-blue-600 h-3 rounded-full transition-all duration-500"
-           style="width: {{ progress }}%">
-      </div>
+    <div style="width: 100%; background: var(--tg-theme-bg-color, #17212b); border-radius: 8px; height: 8px;">
+      <div style="background: var(--tg-theme-link-color, #61dafb); height: 8px; border-radius: 8px; width: {{ progress }}%; transition: width 0.5s;"></div>
     </div>
   </div>
 
   <!-- Savol matni -->
-  <p class="text-base sm:text-lg font-semibold mb-4 leading-relaxed">
+  <div style="font-size: 1.08rem; font-weight: 600; margin-bottom: 18px; color: var(--tg-theme-text-color, #fff); line-height: 1.5;">
     {{ index|add:1 }}. {{ question.text }}
-  </p>
+  </div>
 
-  <form method="post" class="space-y-3">
+  <form method="post" style="display: flex; flex-direction: column; gap: 10px;">
     {% csrf_token %}
     {% for answer in question.answers.all %}
       {% if feedback %}
         {% if feedback.selected_id and answer.id == feedback.selected_id and not feedback.is_correct %}
-          <div class="p-3 rounded-lg bg-red-100 border border-red-400">
+          <div style="padding: 12px 14px; border-radius: 12px; background: #ffeded; color: #d32f2f; border: 1.5px solid #d32f2f; font-weight: 500; display: flex; align-items: center; gap: 8px;">
             ❌ {{ answer.text }} 
-            <span class="text-xs text-gray-600">(tanlagan javobingiz)</span>
+            <span style="font-size: 0.85rem; color: #b0b0b0; margin-left: 6px;">(tanlagan javobingiz)</span>
           </div>
         {% elif answer.id == feedback.correct_id %}
-          <div class="p-3 rounded-lg bg-green-100 border border-green-400">
+          <div style="padding: 12px 14px; border-radius: 12px; background: #e6f9ed; color: #388e3c; border: 1.5px solid #388e3c; font-weight: 500; display: flex; align-items: center; gap: 8px;">
             ✅ {{ answer.text }} 
             {% if feedback.selected_id == answer.id %}
-              <span class="text-xs text-gray-600">(tanlagan javobingiz)</span>
+              <span style="font-size: 0.85rem; color: #b0b0b0; margin-left: 6px;">(tanlagan javobingiz)</span>
             {% endif %}
           </div>
         {% else %}
-          <div class="p-3 rounded-lg bg-gray-100">{{ answer.text }}</div>
+          <div style="padding: 12px 14px; border-radius: 12px; background: var(--tg-theme-bg-color, #17212b); color: var(--tg-theme-hint-color, #a0a0a0); border: 1.5px solid #232e36; font-weight: 500;">{{ answer.text }}</div>
         {% endif %}
       {% else %}
-        <label class="block p-3 border rounded-lg cursor-pointer transition hover:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-500">
-          <input type="radio" name="answer" value="{{ answer.id }}" class="hidden peer">
-          <span class="block text-base sm:text-lg">{{ answer.text }}</span>
+        <label style="display: block; padding: 12px 14px; border-radius: 12px; background: var(--tg-theme-bg-color, #17212b); color: var(--tg-theme-text-color, #fff); border: 1.5px solid #232e36; font-weight: 500; cursor: pointer; transition: background 0.2s, border 0.2s; margin-bottom: 0;">
+          <input type="radio" name="answer" value="{{ answer.id }}" style="display: none;">
+          <span style="font-size: 1rem;">{{ answer.text }}</span>
         </label>
       {% endif %}
     {% endfor %}
 
     {% if feedback %}
       <a href="{% url 'quiz:quiz_question' quiz.id index|add:1 %}"
-         class="mt-4 w-full inline-block px-6 py-3 bg-blue-600 text-white text-center rounded-xl hover:bg-blue-700 transition">
+         style="margin-top: 16px; width: 100%; display: inline-block; padding: 13px 0; background: var(--tg-theme-link-color, #61dafb); color: #fff; text-align: center; border-radius: 12px; font-weight: 600; font-size: 1.08rem; text-decoration: none; transition: background 0.2s;">
         ⏭️ Keyingi savol
       </a>
     {% else %}
       <button type="submit"
-              class="mt-4 w-full px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition">
+              style="margin-top: 16px; width: 100%; padding: 13px 0; background: #30ba6a; color: #fff; border-radius: 12px; font-weight: 600; font-size: 1.08rem; border: none; cursor: pointer; transition: background 0.2s;">
         ✅ Javobni tekshirish
       </button>
     {% endif %}

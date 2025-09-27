@@ -2,30 +2,28 @@
 {% block title %}Testlar ro‘yxati{% endblock %}
 {% block content %}
 
-<h2 class="text-xl sm:text-2xl font-semibold mb-6 text-center">📚 Testlar ro‘yxati</h2>
+<h2 style="font-size: 1.3rem; font-weight: 600; text-align: center; margin-bottom: 18px; color: var(--tg-theme-text-color, #fff);">📚 Testlar ro‘yxati</h2>
 
-<div class="space-y-12">
+<div style="display: flex; flex-direction: column; gap: 32px;">
   {% for category in categories %}
     <div>
-      <h3 class="text-lg sm:text-xl font-bold text-blue-600 mb-6 text-center">{{ category.name }}</h3>
-
-      <!-- Flex card container -->
-      <div class="flex flex-wrap justify-center gap-6">
+      <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--tg-theme-link-color, #61dafb); text-align: center; margin-bottom: 16px;">{{ category.name }}</h3>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;">
         {% for quiz in category.quizzes.all %}
           <a href="{% url 'quiz:start_quiz' quiz.id %}"
-             class="w-full sm:w-72 p-5 bg-white shadow-md rounded-2xl hover:shadow-xl hover:scale-105 transition transform">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-800 mb-2">{{ quiz.title }}</h4>
-            <p class="text-sm sm:text-base text-gray-600">
+             style="display: block; width: 100%; max-width: 270px; background: var(--tg-theme-bg-color, #17212b); color: var(--tg-theme-text-color, #fff); border-radius: 16px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); padding: 18px 16px 14px 16px; text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; border: 1px solid var(--tg-theme-hint-color, #222e35);">
+            <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--tg-theme-text-color, #fff);">{{ quiz.title }}</h4>
+            <p style="font-size: 0.97rem; color: var(--tg-theme-hint-color, #a0a0a0); margin: 0;">
               Savollar soni: {{ quiz.questions.count }}
             </p>
           </a>
         {% empty %}
-          <p class="text-gray-600 text-center w-full">Bu bo‘limda test yo‘q</p>
+          <p style="color: var(--tg-theme-hint-color, #a0a0a0); text-align: center; width: 100%;">Bu bo‘limda test yo‘q</p>
         {% endfor %}
       </div>
     </div>
   {% empty %}
-    <p class="text-gray-600 text-center">Hali hech qanday bo‘lim va test qo‘shilmagan.</p>
+    <p style="color: var(--tg-theme-hint-color, #a0a0a0); text-align: center;">Hali hech qanday bo‘lim va test qo‘shilmagan.</p>
   {% endfor %}
 </div>
 
