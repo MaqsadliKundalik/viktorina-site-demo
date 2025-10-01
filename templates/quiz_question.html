@@ -19,9 +19,9 @@
     {{ index|add:1 }}. {{ question.text }}
   </div>
 
-  <form method="post" style="display: flex; flex-direction: column; gap: 10px;">
+  <form method="post" id="quiz-form" style="display: flex; flex-direction: column; gap: 10px;">
     {% csrf_token %}
-    {% for answer in question.answers.all %}
+    {% for answer in answers %}  <!-- question.answers.all o'rniga answers ishlatilmoqda -->
       {% if feedback %}
         {% if feedback.selected_id and answer.id == feedback.selected_id and not feedback.is_correct %}
           <div style="padding: 12px 14px; border-radius: 12px; background: #ffeded; color: #d32f2f; border: 1.5px solid #d32f2f; font-weight: 500; display: flex; align-items: center; gap: 8px;">
@@ -40,7 +40,7 @@
         {% endif %}
       {% else %}
         <label style="display: block; padding: 12px 14px; border-radius: 12px; background: var(--tg-theme-bg-color, #17212b); color: var(--tg-theme-text-color, #fff); border: 1.5px solid #232e36; font-weight: 500; cursor: pointer; transition: background 0.2s, border 0.2s; margin-bottom: 0;">
-          <input type="radio" name="answer" value="{{ answer.id }}" style="display: none;">
+          <input type="radio" name="answer" value="{{ answer.id }}" style="display: none;" onchange="document.getElementById('quiz-form').submit();">
           <span style="font-size: 1rem;">{{ answer.text }}</span>
         </label>
       {% endif %}
@@ -51,11 +51,6 @@
          style="margin-top: 16px; width: 100%; display: inline-block; padding: 13px 0; background: var(--tg-theme-link-color, #61dafb); color: #fff; text-align: center; border-radius: 12px; font-weight: 600; font-size: 1.08rem; text-decoration: none; transition: background 0.2s;">
         ⏭️ Keyingi savol
       </a>
-    {% else %}
-      <button type="submit"
-              style="margin-top: 16px; width: 100%; padding: 13px 0; background: #30ba6a; color: #fff; border-radius: 12px; font-weight: 600; font-size: 1.08rem; border: none; cursor: pointer; transition: background 0.2s;">
-        ✅ Javobni tekshirish
-      </button>
     {% endif %}
   </form>
 </div>
