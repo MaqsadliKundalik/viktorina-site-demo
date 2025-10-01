@@ -77,3 +77,5 @@ class Command(BaseCommand):
                 imported += 1
 
         self.stdout.write(self.style.SUCCESS(f"✅ Import tugadi! {imported} ta savol qo'shildi."))
+
+
