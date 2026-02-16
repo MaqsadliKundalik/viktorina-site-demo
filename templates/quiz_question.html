@@ -1,58 +1,53 @@
 {% extends "base.html" %}
-{% block title %}{{ quiz.title }} - Savol {{ index|add:1 }}{% endblock %}
+{% block title %}{{ quiz.title }}{% endblock %}
+
 {% block content %}
-
-<div style="background: var(--tg-theme-secondary-bg-color, #222e35); border-radius: 18px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); max-width: 420px; margin: 0 auto; padding: 22px 12px 18px 12px;">
-  <!-- Progress bar -->
-  <div style="margin-bottom: 18px;">
-    <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.98rem; font-weight: 500; color: var(--tg-theme-link-color, #61dafb);">
-      <span> Savol {{ index|add:1 }} / {{ total }} </span>
-      <span> {{ progress }}% </span>
+<div class="card fade-in">
+    <div class="mb-3" style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-weight: 600; color: var(--tg-theme-hint-color);">Savol {{ index|add:1 }} / {{ total }}</span>
+        <span style="font-weight: 600; color: var(--tg-theme-link-color);">{{ progress }}%</span>
     </div>
-    <div style="width: 100%; background: var(--tg-theme-bg-color, #17212b); border-radius: 8px; height: 8px;">
-      <div style="background: var(--tg-theme-link-color, #61dafb); height: 8px; border-radius: 8px; width: {{ progress }}%; transition: width 0.5s;"></div>
+
+    <div class="mb-3" style="height: 6px; background-color: rgba(0,0,0,0.1); border-radius: 3px; overflow: hidden;">
+        <div style="height: 100%; width: {{ progress }}%; background-color: var(--tg-theme-link-color); border-radius: 3px; transition: width 0.3s ease;"></div>
     </div>
-  </div>
 
-  <!-- Savol matni -->
-  <div style="font-size: 1.08rem; font-weight: 600; margin-bottom: 18px; color: var(--tg-theme-text-color, #fff); line-height: 1.5;">
-    {{ index|add:1 }}. {{ question.text }}
-  </div>
+    <h2 class="mb-3" style="font-size: 18px; line-height: 1.5; font-weight: 600;">{{ question.text }}</h2>
 
-  <form method="post" id="quiz-form" style="display: flex; flex-direction: column; gap: 10px;">
-    {% csrf_token %}
-    {% for answer in answers %}  <!-- question.answers.all o'rniga answers ishlatilmoqda -->
-      {% if feedback %}
-        {% if feedback.selected_id and answer.id == feedback.selected_id and not feedback.is_correct %}
-          <div style="padding: 12px 14px; border-radius: 12px; background: #ffeded; color: #d32f2f; border: 1.5px solid #d32f2f; font-weight: 500; display: flex; align-items: center; gap: 8px;">
-            ❌ {{ answer.text }} 
-            <span style="font-size: 0.85rem; color: #b0b0b0; margin-left: 6px;">(tanlagan javobingiz)</span>
-          </div>
-        {% elif answer.id == feedback.correct_id %}
-          <div style="padding: 12px 14px; border-radius: 12px; background: #e6f9ed; color: #388e3c; border: 1.5px solid #388e3c; font-weight: 500; display: flex; align-items: center; gap: 8px;">
-            ✅ {{ answer.text }} 
-            {% if feedback.selected_id == answer.id %}
-              <span style="font-size: 0.85rem; color: #b0b0b0; margin-left: 6px;">(tanlagan javobingiz)</span>
-            {% endif %}
-          </div>
-        {% else %}
-          <div style="padding: 12px 14px; border-radius: 12px; background: var(--tg-theme-bg-color, #17212b); color: var(--tg-theme-hint-color, #a0a0a0); border: 1.5px solid #232e36; font-weight: 500;">{{ answer.text }}</div>
+    <form method="post" id="quiz-form">
+        {% csrf_token %}
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            {% for answer in answers %}
+                {% if feedback %}
+                     {% if answer.id == feedback.correct_id %}
+                        <div class="btn" style="background-color: #2fb344; color: white; text-align: left; position: relative; padding-right: 40px;">
+                            {{ answer.text }}
+                            <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">✅</span>
+                        </div>
+                    {% elif feedback.selected_id == answer.id %}
+                        <div class="btn" style="background-color: #d63e3e; color: white; text-align: left; position: relative; padding-right: 40px;">
+                            {{ answer.text }}
+                            <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">❌</span>
+                        </div>
+                    {% else %}
+                        <div class="btn btn-outline" style="text-align: left; color: var(--tg-theme-text-color); border-color: rgba(128,128,128, 0.3); opacity: 0.7;">
+                            {{ answer.text }}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <label class="btn btn-outline" style="text-align: left; color: var(--tg-theme-text-color); border-color: var(--tg-theme-button-color); cursor: pointer; display: block;">
+                        <input type="radio" name="answer" value="{{ answer.id }}" style="display: none;" onchange="document.getElementById('quiz-form').submit();">
+                        {{ answer.text }}
+                    </label>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if feedback %}
+            <div style="margin-top: 24px;">
+                <a href="{% url 'quiz:quiz_question' quiz.id index|add:1 %}" class="btn">Keyingi savol ⏭️</a>
+            </div>
         {% endif %}
-      {% else %}
-        <label style="display: block; padding: 12px 14px; border-radius: 12px; background: var(--tg-theme-bg-color, #17212b); color: var(--tg-theme-text-color, #fff); border: 1.5px solid #232e36; font-weight: 500; cursor: pointer; transition: background 0.2s, border 0.2s; margin-bottom: 0;">
-          <input type="radio" name="answer" value="{{ answer.id }}" style="display: none;" onchange="document.getElementById('quiz-form').submit();">
-          <span style="font-size: 1rem;">{{ answer.text }}</span>
-        </label>
-      {% endif %}
-    {% endfor %}
-
-    {% if feedback %}
-      <a href="{% url 'quiz:quiz_question' quiz.id index|add:1 %}"
-         style="margin-top: 16px; width: 100%; display: inline-block; padding: 13px 0; background: var(--tg-theme-link-color, #61dafb); color: #fff; text-align: center; border-radius: 12px; font-weight: 600; font-size: 1.08rem; text-decoration: none; transition: background 0.2s;">
-        ⏭️ Keyingi savol
-      </a>
-    {% endif %}
-  </form>
+    </form>
 </div>
-
 {% endblock %}

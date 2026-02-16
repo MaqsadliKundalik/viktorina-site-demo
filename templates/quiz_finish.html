@@ -1,27 +1,26 @@
 {% extends "base.html" %}
 {% block title %}{{ quiz.title }} - Natija{% endblock %}
+
 {% block content %}
-<div style="background: var(--tg-theme-secondary-bg-color, #222e35); border-radius: 18px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); max-width: 420px; margin: 0 auto; padding: 28px 16px 22px 16px; text-align: center;">
-  <h2 style="font-size: 2rem; font-weight: 700; color: #30ba6a; margin-bottom: 18px;">✅ Test tugadi!</h2>
-  <p style="font-size: 1.13rem; margin-bottom: 8px; color: var(--tg-theme-text-color, #fff);">
+<div class="card fade-in text-center">
+  <h2 class="mb-3" style="font-size: 2rem; color: #4cd964; margin-top: 0;">✅ Test tugadi!</h2>
+  
+  <p class="mb-2" style="font-size: 1.1rem; color: var(--tg-theme-text-color);">
     Siz <b>{{ total }}</b> savoldan <b>{{ score }}</b> tasiga to‘g‘ri javob berdingiz.
   </p>
-  <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 18px; color: var(--tg-theme-link-color, #61dafb);">Foiz: {{ percent }}%</p>
+  
+  <div class="mb-3" style="font-size: 2.5rem; font-weight: 700; color: var(--tg-theme-link-color);">
+    {{ percent }}%
+  </div>
 
-  <!-- Progress bar -->
-  <div style="margin-bottom: 24px;">
-    <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.97rem; font-weight: 500; color: #30ba6a;">
-      <span>Bajarildi</span>
-      <span>100%</span>
-    </div>
-    <div style="width: 100%; background: var(--tg-theme-bg-color, #17212b); border-radius: 8px; height: 8px;">
-      <div style="background: #30ba6a; height: 8px; border-radius: 8px; width: 100%; transition: width 0.7s;"></div>
+  <div class="mb-3">
+    <div style="height: 12px; background-color: rgba(0,0,0,0.1); border-radius: 6px; overflow: hidden; position: relative;">
+      <div style="height: 100%; width: {{ percent }}%; background-color: {% if percent >= 80 %}#4cd964{% elif percent >= 50 %}#ffcc00{% else %}#ff3b30{% endif %}; border-radius: 6px; transition: width 1s ease-out;"></div>
     </div>
   </div>
 
-  <a href="{% url 'quiz:quiz_list' %}"
-     style="display: inline-block; width: 100%; padding: 13px 0; background: var(--tg-theme-link-color, #61dafb); color: #fff; border-radius: 12px; font-weight: 600; font-size: 1.08rem; text-decoration: none; transition: background 0.2s;">
-    🔄 Boshqa test tanlash
-  </a>
+  <div style="margin-top: 32px;">
+      <a href="{% url 'quiz:quiz_list' %}" class="btn">🔄 Boshqa test tanlash</a>
+  </div>
 </div>
 {% endblock %}
