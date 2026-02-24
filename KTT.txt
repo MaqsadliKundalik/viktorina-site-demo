@@ -1,0 +1,420 @@
+#	DHCP protokoli IP manzilni nechta bosqichda taqdim etadi?
++	 4 ta bosqichda (Discover, Offer, Request, Acknowledge)
+-	 3 ta bosqichda
+-	 5 ta bosqichda
+-	 2 ta bosqichda
+#	 DHCP protokolining asosiy vazifasi nimadan iborat?
++	 IP-manzillarni avtomatik (dinamik) ajratish
+-	 Domen nomlarini aniqlash
+-	 Fayllarni uzatish
+-	 Trafikni filtrlash
+#	 DHCP serveri tomonidan berilgan IP-manzillar odatda qanday beriladi?
++	 Vaqt bo‘yicha ijaraga
+-	 Doimiy
+-	 Qo‘lda
+-	 Tasodifiy
+#	 DNS xizmatining vazifasi nima?
++	 Kompyuter nomi bo‘yicha IP-manzilni aniqlash
+-	 IP-manzil berish
+-	 Fayl uzatish
+-	 Trafikni nazorat qilish
+#	 DNS serveridagi “A” yozuvi nimani anglatadi?
++	 Domen nomi va unga mos IP-manzilni
+-	 Domen va MAC-manzilni
+-	 Login va parolni
+-	 Port raqamini
+#	 Reverse DNS (teskari DNS) nima qiladi?
++	 IP-manzil bo‘yicha domen nomini aniqlaydi
+-	 Domen bo‘yicha IP beradi
+-	 Trafikni kamaytiradi
+-	 Fayl uzatadi
+#	 Domen nomlari ierarxiyasida root qanday ifodalanadi?
++	) bilan
+-	 www bilan
+-	 com bilan
+-	 uz bilan
+#	 Ikkinchi darajali domenga misol qaysi?
++	uz
+-	com
+-	uz
+-	
+#	edu” domeni nimani bildiradi?
++	 Ta’lim muassasalarini
+-	 Davlat tashkilotlarini
+-	 Tijorat saytlarini
+-	 Xalqaro tashkilotlarni
+#	gov” domeni nimani bildiradi?
++	 Davlat tashkilotlarini
+-	 Ta’lim
+-	 Tijorat
+-	 Shaxsiy saytlarni
+#	 FTP protokolining asosiy vazifasi nima?
++	 Fayllarni uzatish
+-	 IP-manzil berish
+-	 Domen aniqlash
+-	 Trafikni himoyalash
+#	 FTP da “binary” buyrug‘i nima uchun ishlatiladi?
++	 Binar fayllarni uzatish uchun
+-	 Matnli fayllar uchun
+-	 Fayl o‘chirish uchun
+-	 Login uchun
+#	 FTP da “get” buyrug‘i nima vazifa bajaradi?
++	 Serverdan faylni yuklab olish
+-	 Fayl yuborish
+-	 Fayl o‘chirish
+-	 Papka yaratish
+#	 FTP qaysi transport protokoliga tayanadi?
++	 TCP protokoliga
+-	 UDP
+-	 IP
+-	 ICMP
+#	 FTP ga “anonymous” bilan kirish nimani anglatadi?
++	 Ro‘yxatdan o‘tmasdan kirish
+-	 Administrator bo‘lib kirish
+-	 Server egasi bo‘lib kirish
+-	 Faqat o‘qish huquqi
+#	 FTP dagi README faylining vazifasi nima?
++	 Fayllar haqida qisqacha ma’lumot berish
+-	 Fayl uzatish
+-	 Antivirus
+-	 Shifrlash
+#	 Hub OSI modelining qaysi darajasida ishlaydi?
++	 Fizik (1-daraj
+-	 Kanal
+-	 Tarmoq
+-	 Transport
+#	 Hub qaysi rejimda ishlaydi?
++	 Half-duplex
+-	 Full-duplex
+-	 Simplex
+-	 Virtual
+#	 IP protokoli OSI ning qaysi darajasida?
++	 Tarmoq darajasida
+-	 Transport
+-	 Kanal
+-	 Fizik
+#	 IPv4 manzilida nechta oktet bor?
++	 4 ta
+-	 6 ta
+-	 8 ta
+-	 2 ta
+#	 IPv6 manzili necha bitdan iborat?
++	 128 bit
+-	 32 bit
+-	 64 bit
+-	 256 bit
+#	1 manzili nima uchun?
++	 Loopback (o‘zini tekshirish)
+-	 Internetga chiqish
+-	 DNS uchun
+-	 Server manzili
+#	 Har bir IPv4 okteti necha bit?
++	 8 bit
+-	 4 bit
+-	 16 bit
+-	 32 bit
+#	 IP-manzilni aniqlash buyrug‘i (Windows)?
++	 ipconfig
+-	 ping
+-	 netstat
+-	 tracert
+#	 IPv4 necha bitdan iborat?
++	 32 bit
+-	 64 bit
+-	 128 bit
+-	 16 bit
+#	 1984-yilda ISO tomonidan qaysi model ishlab chiqilgan?
++	 OSI modeli
+-	 TCP/IP
+-	 Client-Server
+-	 P2P
+#	 Kerio Control nima uchun ishlatiladi?
++	 Xavfsizlik va trafikni nazorat qilish
+-	 IP berish
+-	 Domen yaratish
+-	 Hosting
+#	 OSI modeli nechta darajadan iborat?
++	 7 ta
+-	 5 ta
+-	 6 ta
+-	 8 ta
+#	 OSI 3-daraja qurilmasi qaysi?
++	 Router
+-	 Hub
+-	 Switch
+-	 Repeater
+#	 Transport darajada qaysi protokollar ishlaydi?
++	 TCP va UDP
+-	 IP va ICMP
+-	 HTTP va FTP
+-	 DNS va DHCP
+#	 OSI ning eng quyi darajasi qaysi?
++	 Fizik daraja
+-	 Kanal
+-	 Tarmoq
+-	 Transport
+#	 OSI ning eng yuqori darajasi qaysi?
++	 Application
+-	 Transport
+-	 Seans
+-	 Taqdim etish
+#	 Proxy-server ma’lumotlarni qayerda saqlaydi?
++	 Kesh (Cache) xotirada
+-	 RAM
+-	 HDD
+-	 Bulutda
+#	 Transparent proxy nima?
++	 Sozlamasiz ishlaydigan proxy
+-	 VPN
+-	 Firewall
+-	 Server
+#	 Switch OSI ning qaysi darajasida ishlaydi?
++	 Kanal (2-daraj
+-	 Fizik
+-	 Tarmoq
+-	 Transport
+#	 TCP/IP qo‘lda sozlanganda nima kiritiladi?
++	 IP va maska
+-	 Faqat DNS
+-	 Login
+-	 MAC
+#	 Ring topologiya nima?
++	 Halqa shaklidagi ulanish
+-	 Shina
+-	 Yulduz
+-	 Daraxt
+#	 Seansni boshqarish qaysi darajaga tegishli?
++	 Session darajasi
+-	 Transport
+-	 Tarmoq
+-	 Fizik
+#	 Axborot xavfsizligi nimani anglatadi?
++	 Axborot himoyalanganligi
+-	 Internet tezligi
+-	 Server quvvati
+-	 Xotira hajmi
+#	 Barcha portlarga signal yuboruvchi qurilma?
++	 Hub
+-	 Switch
+-	 Router
+-	 Modem
+#	 Daraxtsimon topologiya qaysi asosida?
++	 Yulduz topologiyasi
+-	 Shina
+-	 Halqa
+-	 To‘r
+#	 Twisted pair kabel tezligi?
++	 100 Mbit/sek
+-	 10 Mbit/sek
+-	 1 Gbit/sek
+-	 2 Gbit/sek
+#	 Turli tarmoqlarni bog‘lovchi qurilma?
++	 Router
+-	 Hub
+-	 Switch
+-	 Repeater
+#	 Ishonchli va ishonchsiz tarmoq orasidagi himoya?
++	 Firewall
+-	 Proxy
+-	 Hub
+-	 Bridge
+#	 Kompyuter virusi nima?
++	 Zararli va o‘zini ko‘paytiruvchi dastur
+-	 OT
+-	 Drayver
+-	 Antivirus
+#	 Gateway vazifasi nima?
++	 Turli protokolli tarmoqlarni bog‘lash
+-	 Signal kuchaytirish
+-	 IP berish
+-	 Trafikni kamaytirish
+#	 UZ-CERT qachon tashkil etilgan?
++	 2005-yilda
+-	2000
+-	2010
+-	2015
+#	 Tarmoq kartasi vazifasi?
++	 Kompyuterni tarmoqqa ulash
+-	 Internet tezlashtirish
+-	 Xotira qo‘shish
+-	 Virusni o‘chirish
+#	 Bus topologiya nima?
++	 Bitta kabelga ketma-ket ulanish
+-	 Halqa
+-	 Yulduz
+-	 To‘r
+#	 Fizik talablar qaysi darajada belgilanadi?
++	 Fizik darajada
+-	 Kanal
+-	 Tarmoq
+-	 Transport
+#	 MAC-manzillar qaysi darajada paydo bo‘ladi?
++	 Kanal darajasida
+-	 Fizik
+-	 Tarmoq
+-	 Application
+#	 Transport darajaning vazifasi?
++	 Xatosiz va ketma-ket uzatish
+-	 IP berish
+-	 Signal uzatish
+-	 Domen aniqlash
+#	 Shifrlash qaysi darajada?
++	 Presentation
+-	 Transport
+-	 Network
+-	 Physical
+#	 Registration natijasi nima?
++	 Login yaratiladi
+-	 IP beriladi
+-	 Server ochiladi
+-	 Parol o‘chadi
+#	 C sinf niqobi qaysi?
++	0
+-	0
+-	0
+-	255
+#	 Protokol nima?
++	 Aloqa qoidalari to‘plami
+-	 Qurilma
+-	 Kabel
+-	 Server
+#	 Standartlashtirish nimani ta’minlaydi?
++	 Moslikni
+-	 Tezlikni
+-	 Xavfsizlikni
+-	 Narxni
+#	 Tarmoq OT ga misol?
++	 Windows Server
+-	 Windows 11
+-	 Android
+-	 iOS
+#	 Network port nima?
++	 Mantiqiy yoki fizik bog‘lanish
+-	 Kabel
+-	 Qurilma
+-	 IP
+#	 Tarmoq serveri nima?
++	 Resurslarni boshqaruvchi tizim
+-	 Klient
+-	 Hub
+-	 Switch
+#	 Topologiyani tanlashga nima ta’sir qilmaydi?
++	 Materialda ko‘rsatilmagan omillar
+-	 Uskuna
+-	 Kengaytirish
+-	 Boshqarish
+#	 Tarmoq topologiyasi nechta asosiy turga ega?
++	 2 ta: jismoniy va mantiqiy
+-	 3 ta
+-	 4 ta
+-	 5 ta
+#	 Ma’lumot oqimini qaysi topologiya belgilaydi?
++	 Mantiqiy topologiya
+-	 Fizik
+-	 Halqa
+-	 Shina
+#	 Fizik topologiya nima?
++	 Geometrik joylashuv
+-	 Ma’lumot yo‘li
+-	 IP tuzilma
+-	 Protokol
+#	 Ish stansiyasi nima?
++	 Foydalanuvchi ishlaydigan kompyuter
+-	 Server
+-	 Router
+-	 Hub
+#	 Uzatish muhiti nima?
++	 Qurilmalarni bog‘lovchi muhit
+-	 Protokol
+-	 Server
+-	 IP
+#	 Statik IP nima?
++	 O‘zgarmas IP-manzil
+-	 Vaqtinchalik
+-	 Tasodifiy
+-	 Dinamik
+#	 Virtual hosting nima?
++	 Bitta serverda bir nechta sayt
+-	 Alohida server
+-	 Bulut
+-	 Lokal hosting
+#	 Autorization nima?
++	 Huquqlarni tekshirish
+-	 Login berish
+-	 IP aniqlash
+-	 Registratsiya
+#	 Ring topologiyada bitta kompyuter ishdan chiqsa nima bo‘ladi?
++	 Butun tarmoq to‘xtaydi
+-	 Hech narsa bo‘lmaydi
+-	 Tezlik pasayadi
+-	 Faqat bitta uzel o‘chadi
+#	 Shina topologiyada bitta uzel ishdan chiqsa?
++	 Qolganlari ishlaydi
+-	 Tarmoq to‘xtaydi
+-	 Server o‘chadi
+-	 Internet uziladi
+#	 Shina topologiyada kompyuterlar qanday ulanadi?
++	 Parallel
+-	 Ketma-ket
+-	 Halqa
+-	 Yulduz
+#	 Shina oxirida nima bo‘ladi?
++	 Terminator
+-	 Switch
+-	 Router
+-	 Hub
+#	 Shina topologiyada qaysi kabel ishlatiladi?
++	 Koaksial kabel
+-	 Optik
+-	 Juftli o‘ram
+-	 Telefon
+#	 Shinaning asosiy afzalligi?
++	 Arzon va kabel kam
+-	 Juda tez
+-	 Juda ishonchli
+-	 Oson boshqariladi
+#	 Shinaning eng katta kamchiligi?
++	 Asosiy kabel uzilsa — tarmoq to‘xtaydi
+-	 Qimmat
+-	 Sekin
+-	 Murakkab
+#	 Eng tez va ishonchli kabel?
++	 Optik tolali
+-	 Koaksial
+-	 Twisted pair
+-	 Telefon
+#	 Eng yuqori milliy domen?
++	uz
+-	com
+-	edu
+-	gov
+#	 Star topologiyada bitta kompyuter o‘chsa?
++	 Faqat o‘sha ishlamaydi
+-	 Hammasi o‘chadi
+-	 Server o‘chadi
+-	 Internet ketadi
+#	 Star topologiyada kompyuterlar nimaga ulanadi?
++	 Markaziy qurilmaga
+-	 Bir-biriga
+-	 Routerga
+-	 Modemga
+#	 Star topologiyaning kamchiligi?
++	 Markaziy qurilma ishdan chiqsa — tarmoq to‘xtaydi
+-	 Qimmat kabel
+-	 Sekin
+-	 Murakkab
+#	 “Tarmoq topologiyasi” nimani ifodalaydi?
++	 Tarmoq elementlarining jismoniy joylashuvi
+-	 Internet tezligi
+-	 IP tuzilishi
+-	 Dasturiy ta’minot
+#	 Fayl tizimi va pochta xizmatlari qaysi darajada?
++	 Application darajasida
+-	 Transport
+-	 Tarmoq
+-	 Fizik
+#	 “Firewall” so‘zining tarjimasi?
++	 Yong‘in devori
+-	 Elektr devori
+-	 Tarmoq devori
+-	 Himoya kodi
